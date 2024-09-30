@@ -1,0 +1,24 @@
+{
+  "name": "eslint-config-lit",
+  "version": "1.0.0-alpha",
+  "description": "Shared ESLint configuration for use in Livery projects using Lit custom elements.",
+  "keywords": ["liveryvideo", "eslint", "eslintconfig", "lit"],
+  "author": "Livery Video",
+  "homepage": "https://github.com/liveryvideo/eslint-config-lit#readme",
+  "license": "MIT",
+  "repository": "github:liveryvideo/eslint-config-lit",
+  "bugs": {
+    "url": "https://github.com/liveryvideo/eslint-config-lit/issues"
+  },
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "eslint-config-canonical": "^44.3.3"
+  },
+  "peerDependencies": {
+    "eslint": ">=9"
+  }
+}
