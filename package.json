@@ -1,24 +1,31 @@
 {
-  "name": "eslint-config-lit",
+  "name": "@liveryvideo/biome-lit",
   "version": "1.0.0-alpha",
-  "description": "Shared ESLint configuration for use in Livery projects using Lit custom elements.",
-  "keywords": ["liveryvideo", "eslint", "eslintconfig", "lit"],
+  "description": "Shared Biome with ESLint configuration for use in Livery projects using Lit custom elements.",
+  "keywords": [
+    "liveryvideo",
+    "biome",
+    "eslint",
+    "eslintconfig",
+    "lit"
+  ],
   "author": "Livery Video",
-  "homepage": "https://github.com/liveryvideo/eslint-config-lit#readme",
+  "homepage": "https://github.com/liveryvideo/biome-lit#readme",
   "license": "MIT",
-  "repository": "github:liveryvideo/eslint-config-lit",
+  "repository": "github:liveryvideo/biome-lit",
   "bugs": {
-    "url": "https://github.com/liveryvideo/eslint-config-lit/issues"
+    "url": "https://github.com/liveryvideo/biome-lit/issues"
   },
-  "main": "index.js",
+  "exports": {
+    "./biome": "./biome.jsonc",
+    "./eslint": "./eslint.config.js"
+  },
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "eslint-config-canonical": "^44.3.3"
-  },
   "peerDependencies": {
+    "@biomejs/biome": ">=1",
     "eslint": ">=9"
   }
 }

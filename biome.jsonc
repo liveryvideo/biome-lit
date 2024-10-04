@@ -1,0 +1,67 @@
+// TODO: Move specific stuff like globals into player-web
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.0/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "formatter": {
+    "useEditorconfig": true,
+    // The above does not seem to be working yet, so let's repeat the relevant contents here
+    "indentStyle": "space"
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single"
+    }
+  },
+  "linter": {
+    // Base configuration for Node environment config, scripts and tests and third party code
+    "ignore": ["ext/**"],
+    "rules": {
+      "recommended": true,
+      "style": {
+        // Useful when used sparingly, e.g: don't double check tsconfig noUncheckedIndexedAccess
+        "noNonNullAssertion": "off"
+      }
+    }
+  },
+  "overrides": [
+    // Source code
+    {
+      "include": ["index.*", "livery-*.ts", "src/**/*.ts"],
+      "javascript": {
+        // See: vite.config.ts
+        "globals": ["__ENV__", "__RECORD__", "__VERSION__"]
+      },
+      "linter": {
+        "rules": {
+          "all": true,
+          "correctness": {
+            // TypeScript is better at checking this
+            "noUndeclaredVariables": "off"
+          },
+          "style": {
+            // Don't require strict pascal case for compatibility with DOM types like HTMLElementTagNameMap
+            // and we also frequently deal with third party names for Analytics properties and XML attributes, etc.
+            // TODO: Only disable this check where needed; but that's painful without block level biome-ignore support
+            "useNamingConvention": "off"
+          }
+        }
+      }
+    },
+    // Test code
+    {
+      "include": ["test/**/*.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            // Naming of our test files matches the file to be tested, p.e: Foo.ts and Foo.test.ts; not foo.test.ts
+            "useFilenamingConvention": "off"
+          }
+        }
+      }
+    }
+  ]
+}
