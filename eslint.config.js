@@ -1,4 +1,9 @@
 // TODO: Refactor configs into this
+// Including: eslint-plugin-perfectionist, eslint-plugin-lit and eslint-plugin-wc
+// and: eslint-plugin-tsdoc or eslint-plugin-jsdoc?
+// and perhaps also: eslint-plugin-unicorn and eslint-plugin-sonarjs?
+// and deprecated (e.g: eslint-plugin-deprecation) and todo warnings?
+// and eslint-plugin-vitest?
 export default [];
 
 // import auto from 'eslint-config-canonical/configurations/auto.js';
