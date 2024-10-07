@@ -46,7 +46,25 @@ TODO: Document pre-commit hook installation and configuration, e.g: `biome check
 
 TODO: Document CI configuration, e.g: `npm run lint`
 
-TODO: Document VS Code Biome and ESLint extensions installation and configuration
+### VS Code
+
+Install extensions:
+[Biome](https://marketplace.visualstudio.com/items?itemName=biomejs.biome) and
+[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+ 
+And in `settings.json` specify:
+
+```json
+{
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit",
+    "source.organizeImports.biome": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true,
+}
+```
 
 ## Usage
 
