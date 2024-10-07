@@ -1,21 +1,36 @@
-// TODO: Refactor configs into this
-// Including: eslint-plugin-perfectionist, eslint-plugin-lit and eslint-plugin-wc
-// and: eslint-plugin-tsdoc or eslint-plugin-jsdoc?
-// and perhaps also: eslint-plugin-unicorn and eslint-plugin-sonarjs?
-// and deprecated (e.g: eslint-plugin-deprecation) and todo warnings?
-// and eslint-plugin-vitest?
-export default [];
+import {configs as lit} from 'eslint-plugin-lit';
+import {configs as ts} from 'typescript-eslint';
+import {configs as wc} from 'eslint-plugin-wc';
 
-// import auto from 'eslint-config-canonical/configurations/auto.js';
+// Add eslint-plugin-*: perfectionist, unicorn, sonarjs, jsdoc, deprecation, vitest?
+// TODO: Add eslint-plugin-tsdoc once that supports eslint v9 (or in Biome preferably)
 
-// /**
-//  * @type {import('eslint').Linter.Config}[]
-//  */
+/**
+ * ESLint configs linting things that Biome does not support (yet).
+ * 
+ * @type {import('eslint').Linter.Config}[]
+ */
+export default [
+  {
+    ignores: ['dist/', 'ext/', 'node_modules/'],
+  },
+  {
+    files: ['**/*.ts'],
+    ...ts.base
+  },
+  lit['flat/all'],
+  wc['flat/best-practice'],
+  {
+    rules: {
+      // We just use default lower case attribute names (e.g: not snake-case)
+      'lit/attribute-names': 'off',
+      // Unnecessary when extending LitElement like we do
+      'wc/guard-super-call': 'off',
+    }  
+  }
+];
+
 // export const configs = [
-//   {
-//     ignores: ['dist/', 'ext/', 'node_modules/'],
-//   },
-//   ...auto, 
 //   {
 //     files: ['**/*.{js,jsx,cjs,mjs,ts,tsx}'],
 //     rules: {
