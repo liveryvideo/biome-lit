@@ -1,14 +1,19 @@
-import {configs as lit} from 'eslint-plugin-lit';
+import { configs as lit } from 'eslint-plugin-lit';
 import perfectionist from 'eslint-plugin-perfectionist';
-import {configs as wc} from 'eslint-plugin-wc';
-import {configs as ts} from 'typescript-eslint';
+import tsdoc from 'eslint-plugin-tsdoc';
+import { configs as wc } from 'eslint-plugin-wc';
+import { configs as ts } from 'typescript-eslint';
 
-// Add eslint-plugin-*: unicorn, sonarjs, jsdoc, deprecation, vitest?
-// TODO: Add eslint-plugin-tsdoc once that supports eslint v9 (or in Biome preferably)
+// Perhaps also add eslint plugins: deprecation, vitest?
+
+function pluginRulesError(plugin, name) {
+  return Object.fromEntries(
+    Object.keys(plugin.rules).map((rule) => [`${name}/${rule}`, ['error']]),
+  );
+}
 
 /**
  * ESLint configs linting things that Biome does not support (yet).
- * 
  * @type {import('eslint').Linter.Config}[]
  */
 export default [
@@ -17,10 +22,14 @@ export default [
     ignores: ['dist/', 'ext/', 'node_modules/'],
   },
 
-  // TypeScript support
+  // TypeScript support and TSDoc linting
+  // Note: eslint-plugin-tsdoc doesn't support flat config yet, see: https://github.com/microsoft/tsdoc/issues/374
+  // Note: eslint-plugin-jsdoc looks nice as well, but unfortunately is incompatible, even with their typescript config
   {
     files: ['**/*.ts'],
-    ...ts.base
+    ...ts.base,
+    plugins: { ...ts.base.plugins, tsdoc },
+    rules: pluginRulesError(tsdoc, 'tsdoc'),
   },
 
   // Web component support (https://www.webcomponents.org/)
@@ -46,12 +55,11 @@ export default [
     // We can't override ignoreCase through settings when we use recommended-natural config so we'll do it this way
     plugins: { perfectionist },
     rules: {
-      ...Object.fromEntries(
-        Object.keys(perfectionist.rules).map(rule => [`perfectionist/${rule}`, ['error']]),
-      ),
+      ...pluginRulesError(perfectionist, 'perfectionist'),
       // Sort public members above protected instead of below private
       // and (public) property getter/setter methods along with plain properties
       // and function-properties (e.g: bound methods) along with methods
+      // Reported issue: https://github.com/azat-io/eslint-plugin-perfectionist/issues/309
       'perfectionist/sort-classes': [
         'error',
         {
@@ -62,8 +70,18 @@ export default [
             'private-static-property',
             'static-block',
             ['property', 'accessor-property', 'get-method', 'set-method'],
-            ['protected-property', 'protected-accessor-property', 'protected-get-method', 'protected-set-method'],
-            ['private-property', 'private-accessor-property', 'private-get-method', 'private-set-method'],
+            [
+              'protected-property',
+              'protected-accessor-property',
+              'protected-get-method',
+              'protected-set-method',
+            ],
+            [
+              'private-property',
+              'private-accessor-property',
+              'private-get-method',
+              'private-set-method',
+            ],
             'constructor',
             ['static-method', 'static-function-property'],
             ['protected-static-method', 'protected-static-function-property'],
@@ -72,8 +90,8 @@ export default [
             ['protected-method', 'protected-function-property'],
             ['private-method', 'private-function-property'],
             'unknown',
-          ]
-        }
+          ],
+        },
       ],
       // Leave import sorting up to Biome
       'perfectionist/sort-imports': 'off',
@@ -85,7 +103,7 @@ export default [
         ignoreCase: false,
         // Natural is preferable over plain alphabetic
         type: 'natural',
-      }
-    }
+      },
+    },
   },
 ];

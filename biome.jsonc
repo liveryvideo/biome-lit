@@ -37,6 +37,7 @@
       },
       "linter": {
         "rules": {
+          // Let's be strict, including all rules ported from sonarjs and unicorn eslint plugins, etc.
           "all": true,
           "correctness": {
             // TypeScript is better at checking this
