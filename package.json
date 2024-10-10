@@ -1,11 +1,17 @@
 {
   "name": "@liveryvideo/biome-lit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publishConfig": {
     "access": "public"
   },
   "description": "Shared Biome with ESLint configuration for use in Livery projects using Lit custom elements.",
-  "keywords": ["liveryvideo", "biome", "eslint", "eslintconfig", "lit"],
+  "keywords": [
+    "liveryvideo",
+    "biome",
+    "eslint",
+    "eslintconfig",
+    "lit"
+  ],
   "author": "Livery Video",
   "homepage": "https://github.com/liveryvideo/biome-lit#readme",
   "license": "MIT",
@@ -43,6 +49,8 @@
     "semantic-release": "^24.1.2"
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
