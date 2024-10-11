@@ -1,5 +1,6 @@
 # biome-lit
-Shared Biome with ESLint configuration for use in Livery projects using Lit custom elements.
+
+Shared Biome with ESLint configuration for use in Livery projects using TypeScript and Lit custom elements.
 
 This uses [Biome](https://biomejs.dev/) for most linting and formatting, see [biome.jsonc](./biome.jsonc) for details.
 
@@ -40,11 +41,52 @@ Add scripts to `package.json` with:
 }
 ```
 
-TODO: Document TypeScript installation and configuration
+## Usage
 
-TODO: Document pre-commit hook installation and configuration, e.g: `biome check --fix <files>` and `eslint --fix <files>`
+To check formatting and linting rules and possibly exit with errors:
 
-TODO: Document CI configuration, e.g: `npm run lint`
+```bash
+npm run lint
+```
+
+To automatically fix errors and possibly exit with remaining errors:
+
+```bash
+npm run lint:fix
+```
+
+## Conventions
+
+This assumes the following conventional files/directories:
+
+- `.editorconfig` - Should be supported by Biome, but for now we manually specify `indentStyle: space`
+- `.gitignore` - Is supported by Biome, but not by ESLint, there we manually specify ignores: `dist/, ext/, node_modules/`
+- `index.html` - SDK test or App page
+- `index.ts` - SDK exports or App code
+- `livery-*.ts` - SDK test or App element(s)
+- `dist/` - Bundled files for distribution
+- `ext/` - Any external (third party) source files, only formatted (not linted) by biome; to be imported from TypeScript source files
+- `src/**/*.ts` - Source files processed through biome, eslint, typescript and server/bundler (e.g: vite)
+- `test/**/*.test.ts` - Unit test files (e.g: vitest) with names matching the source modules they test
+- `tsconfig.json` - TypeScript config
+
+## Formatting and linting
+
+Based on the conventions above:
+
+- Indent using 2 spaces and use single quotes for formatting
+- `index.*, livery-*.ts, src/**/*.ts` are formatted by Biome and strictly linted using all rules but for a few
+- Other supported files are formatted by Biome and all but `ext/` are linted using only the recommended rules
+- All supported files but `dist/, ext/, node_modules/` are linted by ESLint using rules from plugins:
+[lit](https://npmjs.com/package/eslint-plugin-lit),
+[perfectionist](https://npmjs.com/package/eslint-plugin-perfectionist),
+[tsdoc](https://npmjs.com/package/eslint-plugin-tsdoc) and
+[wc](https://npmjs.com/package/eslint-plugin-wc)
+  - Where `**/*.ts` files are parsed using [typescript-eslint](https://npmjs.com/package/typescript-eslint)
+
+**TODO: Also lint test files strictly**
+
+## Additional installation
 
 ### VS Code
 
@@ -66,20 +108,51 @@ And in `settings.json` specify:
 }
 ```
 
-## Usage
+### Git pre-commit
 
-To check formatting and linting rules and possibly exit with errors:
+To check and, where possible, auto fix errors while committing:
+
+Install dependencies:
 
 ```bash
+npm install -D husky lint-staged
+```
+
+Create `.husky/pre-commit` with:
+
+```bash
+npx lint-staged -r
+```
+
+Add lint-stage config to `package.json`:
+
+```json
+{
+  "lint-staged": {
+    "*": ["biome check --fix --no-errors-on-unmatched", "eslint --fix"]
+  }
+}
+```
+
+### CI
+
+Add a step to your test jobs, e.g:
+
+```bash
+npm ci
 npm run lint
+npm test
 ```
 
-To automatically fix errors and possibly exit with remaining errors:
+#### CI Error
+
+If CI results in: `Error: Cannot find module '@biomejs/cli-linux-x64/biome'` then on your machine:
 
 ```bash
-npm run lint:fix
+rm -rf node_modules package-lock.json
+npm install
 ```
 
-## Conventions
+And commit and push to try again.
 
-TODO: Move documentation of conventions like ext/, src/ and test/ directories etc. from player-web/DEVELOPMENT.md here
+See: https://github.com/npm/cli/issues/4828
