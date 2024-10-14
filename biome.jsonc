@@ -29,7 +29,7 @@
   "overrides": [
     // Source code
     {
-      "include": ["index.*", "livery-*.ts", "src/**/*.ts"],
+      "include": ["index.*", "livery-*.ts", "src/**/*.ts", "test/**/*.ts"],
       "linter": {
         "rules": {
           // Let's be strict, including all rules ported from sonarjs and unicorn eslint plugins, etc.

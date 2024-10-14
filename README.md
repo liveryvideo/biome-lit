@@ -67,24 +67,23 @@ This assumes the following conventional files/directories:
 - `dist/` - Bundled files for distribution
 - `ext/` - Any external (third party) source files, only formatted (not linted) by biome; to be imported from TypeScript source files
 - `src/**/*.ts` - Source files processed through biome, eslint, typescript and server/bundler (e.g: vite)
-- `test/**/*.test.ts` - Unit test files (e.g: vitest) with names matching the source modules they test
+- `test/**/*.ts` - Unit test files (e.g: vitest) with names matching the source modules they test and `.test.ts` extension
 - `tsconfig.json` - TypeScript config
 
-## Formatting and linting
+## Summary
 
-Based on the conventions above:
+Based on the conventions above this will:
 
 - Indent using 2 spaces and use single quotes for formatting
-- `index.*, livery-*.ts, src/**/*.ts` are formatted by Biome and strictly linted using all rules but for a few
-- Other supported files are formatted by Biome and all but `ext/` are linted using only the recommended rules
+- `index.*, livery-*.ts, src/**/*.ts, test/**/*.ts` are formatted by Biome and strictly linted using [all rules](https://biomejs.dev/linter/rules/) but for a few
+- All other supported files (e.g: config, scripts) but those matching `.gitignore` are formatted by Biome
+  - And all of those but `ext/` are linted using only the [recommended rules](https://biomejs.dev/linter/rules/#recommended-rules)
 - All supported files but `dist/, ext/, node_modules/` are linted by ESLint using rules from plugins:
 [lit](https://npmjs.com/package/eslint-plugin-lit),
 [perfectionist](https://npmjs.com/package/eslint-plugin-perfectionist),
 [tsdoc](https://npmjs.com/package/eslint-plugin-tsdoc) and
 [wc](https://npmjs.com/package/eslint-plugin-wc)
   - Where `**/*.ts` files are parsed using [typescript-eslint](https://npmjs.com/package/typescript-eslint)
-
-**TODO: Also lint test files strictly**
 
 ## Additional installation
 
