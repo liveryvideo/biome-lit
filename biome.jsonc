@@ -1,4 +1,3 @@
-// TODO: Move specific stuff like globals into player-web
 {
   "$schema": "https://biomejs.dev/schemas/1.9.0/schema.json",
   "vcs": {
@@ -31,10 +30,6 @@
     // Source code
     {
       "include": ["index.*", "livery-*.ts", "src/**/*.ts"],
-      "javascript": {
-        // See: vite.config.ts
-        "globals": ["__ENV__", "__RECORD__", "__VERSION__"]
-      },
       "linter": {
         "rules": {
           // Let's be strict, including all rules ported from sonarjs and unicorn eslint plugins, etc.
