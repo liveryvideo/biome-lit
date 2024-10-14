@@ -14,10 +14,11 @@ Install the dependencies:
 npm install -D @biomejs/biome eslint @liveryvideo/biome-lit
 ```
 
-Create `biome.jsonc` with:
+Create `biome.jsonc` with: (you can add project specific overrides below)
 
 ```json
 {
+  "$schema": "https://biomejs.dev/schemas/1.9.0/schema.json",
   "extends": ["@liveryvideo/biome-lit/biome"]
 }
 ```
