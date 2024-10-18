@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/liveryvideo/biome-lit/compare/v1.0.2...v1.0.3) (2024-10-18)
+
+
+### Bug Fixes
+
+* **biome:** format package.json like npm ([a914d36](https://github.com/liveryvideo/biome-lit/commit/a914d364e490347b2e6bbc7f34e2344584bad2ba))
+* **eslint:** sort-classes groups exactly like next version of perfectionist ([c8153b2](https://github.com/liveryvideo/biome-lit/commit/c8153b294f48903793f38dad45844d77d7a57144))
+
 ## [1.0.2](https://github.com/liveryvideo/biome-lit/compare/v1.0.1...v1.0.2) (2024-10-14)
 
 
