@@ -65,6 +65,7 @@ This assumes the following conventional files/directories:
 - `index.html` - SDK test or App page
 - `index.ts` - SDK exports or App code
 - `livery-*.ts` - SDK test or App element(s)
+- `package.json` - NPM package config
 - `dist/` - Bundled files for distribution
 - `ext/` - Any external (third party) source files, only formatted (not linted) by biome; to be imported from TypeScript source files
 - `src/**/*.ts` - Source files processed through biome, eslint, typescript and server/bundler (e.g: vite)

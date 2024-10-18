@@ -8,6 +8,7 @@
   "formatter": {
     "useEditorconfig": true,
     // The above does not seem to be working yet, so let's repeat the relevant contents here
+    // TODO: On Biome update see if this can be removed
     "indentStyle": "space"
   },
   "javascript": {
@@ -27,6 +28,14 @@
     }
   },
   "overrides": [
+    // Make Biome format this like npm, see: https://github.com/biomejs/biome/issues/2763
+    // TODO: On Biome update see if this can be removed
+    {
+      "include": ["package.json"],
+      "formatter": {
+        "lineWidth": 1
+      }
+    },
     // Source code
     {
       "include": ["index.*", "livery-*.ts", "src/**/*.ts", "test/**/*.ts"],
