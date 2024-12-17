@@ -2,7 +2,7 @@ import { configs as lit } from 'eslint-plugin-lit';
 import perfectionist from 'eslint-plugin-perfectionist';
 import tsdoc from 'eslint-plugin-tsdoc';
 import { configs as wc } from 'eslint-plugin-wc';
-import { configs as ts } from 'typescript-eslint';
+import { configs as ts, parser as tsParser } from 'typescript-eslint';
 
 // Perhaps also add eslint plugins: deprecation, vitest?
 
@@ -11,6 +11,8 @@ function pluginRulesError(plugin, name) {
     Object.keys(plugin.rules).map((rule) => [`${name}/${rule}`, ['error']]),
   );
 }
+
+const tsFiles = ['**/*.ts'];
 
 /**
  * ESLint configs linting things that Biome does not support (yet).
@@ -22,13 +24,29 @@ export default [
     ignores: ['dist/', 'ext/', 'node_modules/'],
   },
 
-  // TypeScript support and TSDoc linting
+  // TypeScript support and a few cherry picked rules
+  {
+    files: tsFiles,
+    ...ts.base,
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    plugins: { ...ts.base.plugins },
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'error',
+    },
+  },
+
+  // TSDoc linting (depends on TypeScript support)
   // Note: eslint-plugin-tsdoc doesn't support flat config yet, see: https://github.com/microsoft/tsdoc/issues/374
   // Note: eslint-plugin-jsdoc looks nice as well, but unfortunately is incompatible, even with their typescript config
   {
-    files: ['**/*.ts'],
-    ...ts.base,
-    plugins: { ...ts.base.plugins, tsdoc },
+    files: tsFiles,
+    plugins: { tsdoc },
     rules: pluginRulesError(tsdoc, 'tsdoc'),
   },
 
