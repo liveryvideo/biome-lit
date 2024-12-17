@@ -8,7 +8,7 @@ import { configs as ts, parser as tsParser } from 'typescript-eslint';
 
 function pluginRulesError(plugin, name) {
   return Object.fromEntries(
-    Object.keys(plugin.rules).map((rule) => [`${name}/${rule}`, ['error']]),
+    Object.keys(plugin.rules).map((rule) => [`${name}/${rule}`, 'error']),
   );
 }
 
@@ -71,6 +71,8 @@ export default [
   // Perfectionist formatting
   {
     // We can't override ignoreCase through settings when we use recommended-natural config so we'll do it this way
+    // FIXME: Actually ignoreCase doesn't seem to be effective now either, but other settings are
+    // See: https://github.com/azat-io/eslint-plugin-perfectionist/issues/424
     plugins: { perfectionist },
     rules: {
       ...pluginRulesError(perfectionist, 'perfectionist'),
@@ -80,9 +82,8 @@ export default [
     },
     settings: {
       perfectionist: {
-        // Case has meaning, p.e: fooBar, fooBarCount, foobCount; you want foo to be grouped separately from foob
+        // Case has meaning, p.e: 'fooBarge' | 'fooWargs' | 'foobArgs'; you want to group by foo before foob
         ignoreCase: false,
-        // Natural is preferable over plain alphabetic
         type: 'natural',
       },
     },
