@@ -74,37 +74,6 @@ export default [
     plugins: { perfectionist },
     rules: {
       ...pluginRulesError(perfectionist, 'perfectionist'),
-      // Improve class group order, see: https://github.com/azat-io/eslint-plugin-perfectionist/pull/320
-      // TODO: On next major Perfectionist version this will be default and can be removed
-      'perfectionist/sort-classes': [
-        'error',
-        {
-          groups: [
-            'index-signature',
-            ['static-property', 'static-accessor-property'],
-            ['static-get-method', 'static-set-method'],
-            ['protected-static-property', 'protected-static-accessor-property'],
-            ['protected-static-get-method', 'protected-static-set-method'],
-            ['private-static-property', 'private-static-accessor-property'],
-            ['private-static-get-method', 'private-static-set-method'],
-            'static-block',
-            ['property', 'accessor-property'],
-            ['get-method', 'set-method'],
-            ['protected-property', 'protected-accessor-property'],
-            ['protected-get-method', 'protected-set-method'],
-            ['private-property', 'private-accessor-property'],
-            ['private-get-method', 'private-set-method'],
-            'constructor',
-            ['static-method', 'static-function-property'],
-            ['protected-static-method', 'protected-static-function-property'],
-            ['private-static-method', 'private-static-function-property'],
-            ['method', 'function-property'],
-            ['protected-method', 'protected-function-property'],
-            ['private-method', 'private-function-property'],
-            'unknown',
-          ],
-        },
-      ],
       // Leave import sorting up to Biome
       'perfectionist/sort-imports': 'off',
       'perfectionist/sort-named-imports': 'off',
