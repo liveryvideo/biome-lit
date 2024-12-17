@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/liveryvideo/biome-lit/compare/v1.0.3...v1.1.0) (2024-12-17)
+
+
+### Features
+
+* add biome nursery linter rule useConsistentMemberAccessibility ([edb31d1](https://github.com/liveryvideo/biome-lit/commit/edb31d13640d4b3da8064ef65a1f9c8e77438226))
+* add rule @typescript-eslint/no-floating-promises ([e597ef2](https://github.com/liveryvideo/biome-lit/commit/e597ef2b7c972712447ea30ee614efd69f7b77f9))
+
 ## [1.0.3](https://github.com/liveryvideo/biome-lit/compare/v1.0.2...v1.0.3) (2024-10-18)
 
 
