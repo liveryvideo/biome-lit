@@ -47,6 +47,9 @@
             // TypeScript is better at checking this
             "noUndeclaredVariables": "off"
           },
+          "nursery": {
+            "useConsistentMemberAccessibility": "error"
+          },
           "style": {
             // Don't require strict pascal case for compatibility with DOM types like HTMLElementTagNameMap
             // and we also frequently deal with third party names for Analytics properties and XML attributes, etc.
