@@ -1,3 +1,4 @@
+import stylistic from '@stylistic/eslint-plugin';
 import { configs as lit } from 'eslint-plugin-lit';
 import perfectionist from 'eslint-plugin-perfectionist';
 import { Alphabet } from 'eslint-plugin-perfectionist/alphabet';
@@ -70,7 +71,7 @@ export default [
     },
   },
 
-  // Perfectionist formatting
+  // Perfectionist sorting
   {
     plugins: { perfectionist },
     rules: {
@@ -90,6 +91,16 @@ export default [
         ignoreCase: false,
         type: 'custom',
       },
+    },
+  },
+
+  // Stylistic formatting
+  {
+    plugins: {
+      '@stylistic': stylistic,
+    },
+    rules: {
+      '@stylistic/lines-between-class-members': 'error',
     },
   },
 ];
