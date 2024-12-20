@@ -37,10 +37,13 @@ Add scripts to `package.json` with:
 {
   "scripts": {
     "lint": "biome check && eslint && tsc",
-    "lint:fix": "biome check --fix && eslint --fix"
+    "lint:fix": "eslint --fix && biome check --fix"
   }
 }
 ```
+
+**Note:** Fix eslint first to leave final formatting up to biome.
+P.e: with eslint perfectionist changing member sorting and then biome wrapping lines. But while linting start with biome to fail as fast as possible.
 
 ## Usage
 
