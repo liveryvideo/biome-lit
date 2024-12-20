@@ -39,6 +39,7 @@ export default [
     plugins: { ...ts.base.plugins },
     rules: {
       '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/prefer-promise-reject-errors': 'error',
     },
   },
 
