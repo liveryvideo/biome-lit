@@ -1,5 +1,6 @@
 import { configs as lit } from 'eslint-plugin-lit';
 import perfectionist from 'eslint-plugin-perfectionist';
+import { Alphabet } from 'eslint-plugin-perfectionist/alphabet';
 import tsdoc from 'eslint-plugin-tsdoc';
 import { configs as wc } from 'eslint-plugin-wc';
 import { configs as ts, parser as tsParser } from 'typescript-eslint';
@@ -29,11 +30,11 @@ export default [
     files: tsFiles,
     ...ts.base,
     languageOptions: {
-      parser: tsParser,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
+      parser: tsParser,
     },
     plugins: { ...ts.base.plugins },
     rules: {
@@ -70,9 +71,6 @@ export default [
 
   // Perfectionist formatting
   {
-    // We can't override ignoreCase through settings when we use recommended-natural config so we'll do it this way
-    // FIXME: Actually ignoreCase doesn't seem to be effective now either, but other settings are
-    // See: https://github.com/azat-io/eslint-plugin-perfectionist/issues/424
     plugins: { perfectionist },
     rules: {
       ...pluginRulesError(perfectionist, 'perfectionist'),
@@ -81,10 +79,15 @@ export default [
       'perfectionist/sort-named-imports': 'off',
     },
     settings: {
+      // Case has meaning, p.e. with: 'fooBarge' | 'fooWargs' | 'foobArgs', we want to group by foo before foob
+      // See: https://github.com/azat-io/eslint-plugin-perfectionist/issues/424
       perfectionist: {
-        // Case has meaning, p.e: 'fooBarge' | 'fooWargs' | 'foobArgs'; you want to group by foo before foob
+        alphabet: Alphabet.generateRecommendedAlphabet()
+          .sortByNaturalSort('en-US')
+          .placeAllWithCaseBeforeAllWithOtherCase('uppercase')
+          .getCharacters(),
         ignoreCase: false,
-        type: 'natural',
+        type: 'custom',
       },
     },
   },
