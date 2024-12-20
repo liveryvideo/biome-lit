@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/liveryvideo/biome-lit/compare/v1.1.1...v1.2.0) (2024-12-20)
+
+
+### Features
+
+* add eslint rule @typescript-eslint/prefer-promise-reject-errors ([e442564](https://github.com/liveryvideo/biome-lit/commit/e442564756c3669266bad4800502fdf005518a05))
+
 ## [1.1.1](https://github.com/liveryvideo/biome-lit/compare/v1.1.0...v1.1.1) (2024-12-20)
 
 
