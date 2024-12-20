@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/liveryvideo/biome-lit/compare/v1.2.0...v1.3.0) (2024-12-20)
+
+
+### Features
+
+* **eslint:** add @stylistic/eslint-plugin with rule @stylistic/lines-between-class-members ([dd40ca9](https://github.com/liveryvideo/biome-lit/commit/dd40ca9574ce1a41530c52776f9a3c65ddba4b26))
+
 # [1.2.0](https://github.com/liveryvideo/biome-lit/compare/v1.1.1...v1.2.0) (2024-12-20)
 
 
