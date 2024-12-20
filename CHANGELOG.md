@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/liveryvideo/biome-lit/compare/v1.1.0...v1.1.1) (2024-12-20)
+
+
+### Bug Fixes
+
+* **eslint:** configure perfectionist to sort by case as expected ([9a529d1](https://github.com/liveryvideo/biome-lit/commit/9a529d13218e832e488e6c82bdf9138639a63d1d))
+
 # [1.1.0](https://github.com/liveryvideo/biome-lit/compare/v1.0.3...v1.1.0) (2024-12-17)
 
 
