@@ -101,7 +101,6 @@ export default [
     },
     rules: {
       '@stylistic/lines-between-class-members': 'error',
-      '@stylistic/no-extra-parens': 'error',
     },
   },
 ];
