@@ -94,13 +94,14 @@ export default [
     },
   },
 
-  // Stylistic formatting
+  // A few cherry picked Stylistic formatting rules
   {
     plugins: {
       '@stylistic': stylistic,
     },
     rules: {
       '@stylistic/lines-between-class-members': 'error',
+      '@stylistic/no-extra-parens': 'error',
     },
   },
 ];
