@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/liveryvideo/biome-lit/compare/v1.4.0...v1.4.1) (2024-12-24)
+
+
+### Bug Fixes
+
+* **eslint:** remove rule @stylistic/no-extra-parens ([282347d](https://github.com/liveryvideo/biome-lit/commit/282347d29da962539d0e67cd8c4392cfb2ad9c49))
+
 # [1.4.0](https://github.com/liveryvideo/biome-lit/compare/v1.3.0...v1.4.0) (2024-12-24)
 
 
