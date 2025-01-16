@@ -31,11 +31,8 @@ export default [
     files: tsFiles,
     ...ts.base,
     languageOptions: {
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
       parser: tsParser,
+      parserOptions: { projectService: true },
     },
     plugins: { ...ts.base.plugins },
     rules: {
