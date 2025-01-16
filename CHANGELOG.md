@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/liveryvideo/biome-lit/compare/v1.5.0...v1.5.1) (2025-01-16)
+
+
+### Bug Fixes
+
+* **eslint:** don't specify tsconfigRootDir for tsdoc plugin to work as expected ([24e086c](https://github.com/liveryvideo/biome-lit/commit/24e086cc0645fd4f07c7a5b78dc95d3f4c712771))
+
 # [1.5.0](https://github.com/liveryvideo/biome-lit/compare/v1.4.1...v1.5.0) (2025-01-16)
 
 
