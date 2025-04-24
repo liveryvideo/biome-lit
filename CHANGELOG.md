@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/liveryvideo/biome-lit/compare/v1.5.1...v1.6.0) (2025-04-24)
+
+
+### Features
+
+* **eslint:** update plugins: [@stylistic](https://github.com/stylistic) 4.2.0,  lit 2.1.1, wc 3.0.0, etc ([6cb92ac](https://github.com/liveryvideo/biome-lit/commit/6cb92ac376c5e0417aab19b0e9bac92a59e23f5c))
+
 ## [1.5.1](https://github.com/liveryvideo/biome-lit/compare/v1.5.0...v1.5.1) (2025-01-16)
 
 
