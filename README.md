@@ -8,6 +8,10 @@ And [ESLint](https://eslint.org/) for additional linting, see [eslint.config.js]
 
 ## Installation
 
+TODO: Include default `tsconfig.json` in this repo to extend from other repos
+And enable "strictNullChecks": true in there while we are at it?
+
+
 Install the dependencies:
 
 ```bash
@@ -103,9 +107,9 @@ And in `settings.json` specify:
 ```json
 {
   "editor.codeActionsOnSave": {
-    "quickfix.biome": "explicit",
-    "source.organizeImports.biome": "explicit",
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.biome": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports.biome": "explicit"
   },
   "editor.defaultFormatter": "biomejs.biome",
   "editor.formatOnSave": true,

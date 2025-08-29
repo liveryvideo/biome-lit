@@ -6,11 +6,12 @@
   },
   "description": "Shared Biome with ESLint configuration for use in Livery projects using TypeScript and Lit custom elements.",
   "keywords": [
-    "liveryvideo",
     "biome",
+    "biomejs",
     "eslint",
     "eslintconfig",
-    "lit"
+    "lit",
+    "liveryvideo"
   ],
   "author": "Livery Video",
   "homepage": "https://github.com/liveryvideo/biome-lit#readme",
@@ -29,25 +30,25 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
-    "@biomejs/biome": ">=1",
+    "@biomejs/biome": ">=2",
     "eslint": ">=9"
   },
   "dependencies": {
-    "@stylistic/eslint-plugin": "^4.2.0",
+    "@stylistic/eslint-plugin": "^5.2.3",
     "eslint-plugin-lit": "^2.1.1",
-    "eslint-plugin-perfectionist": "^4.12.2",
+    "eslint-plugin-perfectionist": "^4.15.0",
     "eslint-plugin-tsdoc": "^0.4.0",
-    "eslint-plugin-wc": "^3.0.0",
-    "typescript-eslint": "^8.31.0"
+    "eslint-plugin-wc": "^3.0.1",
+    "typescript-eslint": "^8.40.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.8.0",
-    "@commitlint/config-conventional": "^19.8.0",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "git-branch-is": "^4.0.0",
     "husky": "^9.1.7",
-    "semantic-release": "^24.2.3"
+    "semantic-release": "^24.2.7"
   },
   "commitlint": {
     "extends": [

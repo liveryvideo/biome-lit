@@ -78,7 +78,7 @@ export default [
       'perfectionist/sort-named-imports': 'off',
     },
     settings: {
-      // Case has meaning, p.e. with: 'fooBarge' | 'fooWargs' | 'foobArgs', we want to group by foo before foob
+      // Case has meaning, p.e. with: 'foo' | 'fooBarge' | 'fooWargs' | 'foobArgs', we want to group by foo before foob
       // See: https://github.com/azat-io/eslint-plugin-perfectionist/issues/424
       perfectionist: {
         alphabet: Alphabet.generateRecommendedAlphabet()
