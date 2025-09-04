@@ -73,8 +73,10 @@ export default [
     plugins: { perfectionist },
     rules: {
       ...pluginRulesError(perfectionist, 'perfectionist'),
-      // Leave import sorting up to Biome
+      // Leave import and export sorting up to Biome
+      'perfectionist/sort-exports': 'off',
       'perfectionist/sort-imports': 'off',
+      'perfectionist/sort-named-exports': 'off',
       'perfectionist/sort-named-imports': 'off',
     },
     settings: {
