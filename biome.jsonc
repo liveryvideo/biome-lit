@@ -54,7 +54,9 @@
         "rules": {
           "correctness": {
             // TypeScript is better at checking this
-            "noUndeclaredVariables": "off"
+            "noUndeclaredVariables": "off",
+            // Biome is just plain wrong here sometimes; leave it to TypeScript
+            "noUnusedPrivateClassMembers": "off"
           },
           "style": {
             "useConsistentMemberAccessibility": "error",
