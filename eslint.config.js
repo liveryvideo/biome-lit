@@ -38,6 +38,7 @@ export default [
     rules: {
       '@typescript-eslint/no-floating-promises': 'error',
       '@typescript-eslint/prefer-promise-reject-errors': 'error',
+      '@typescript-eslint/prefer-readonly': 'error',
     },
   },
 

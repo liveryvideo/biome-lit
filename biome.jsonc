@@ -1,9 +1,8 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
-  // TODO: This does not seem to work
-  "extends": ["./biome-all-linter-rules.jsonc"],
+  // Note: As this file is extended from projects, this can't extend something else
   "files": {
-    "includes": ["**/*", "!ext/**"]
+    "includes": ["**/*", "!ext"]
   },
   "vcs": {
     "enabled": true,
@@ -26,44 +25,95 @@
       "source": {
         // Sorting is not/poorly supported by Biome so we handle that with eslint perfectionist
         // Note: If we do ever add actions here, also add them to README VS Code editor.codeActionsOnSave
-        "organizeImports": "on"
+        "organizeImports": "off"
       }
     }
   },
   "linter": {
-    // Base configuration for Node environment config, scripts and tests and third party code
+    // Enable all rules; then disable those we don't like below
     "rules": {
-      "suspicious": {
-        // This is broken; thinks a static and a normal method with the same name are overloading when they're not
-        "useAdjacentOverloadSignatures": "off"
-      },
-      "style": {
-        // Useful when used sparingly, e.g: don't double check tsconfig noUncheckedIndexedAccess
-        "noNonNullAssertion": "off"
-      }
+      "a11y": "on",
+      "complexity": "on",
+      "correctness": "on",
+      "performance": "on",
+      "security": "on",
+      "style": "on",
+      "suspicious": "on"
     }
   },
   "overrides": [
+    // Base configuration
+    {
+      "includes": ["**/*", "!ext/**"],
+      "linter": {
+        // TODO: Disable domain specific rules (this does not work)
+        // "domains": {
+        //   "next": "none",
+        //   "project": "none",
+        //   "qwik": "none",
+        //   "react": "none",
+        //   "solid": "none",
+        //   "test": "none",
+        //   "vue": "none"
+        // },
+        "rules": {
+          "suspicious": {
+            // This is broken; thinks a static and a normal method with the same name are overloading when they're not
+            "useAdjacentOverloadSignatures": "off"
+          },
+          "style": {
+            // Useful when used sparingly, e.g: don't double check tsconfig noUncheckedIndexedAccess
+            "noNonNullAssertion": "off",
+            // Don't require strict pascal case for compatibility with DOM types like HTMLElementTagNameMap
+            // and we also frequently deal with third party names for Analytics properties and XML attributes, etc.
+            // and we use vite defines named: __NAME__
+            // TODO: Use custom naming convention and only disable this check where needed
+            "useNamingConvention": "off"
+          }
+        }
+      }
+    },
+    // Node environment config?
+    // Node scripts and configs
+    {
+      "includes": ["*.cjs", "*.js", "*.ts", "!index.*"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            // Can be used here
+            "noNodejsModules": "off"
+          },
+          "performance": {
+            // Irrelevant for build scripts
+            "useTopLevelRegex": "off"
+          },
+          "style": {
+            // Config script commonly use default exports
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    },
+    // Third party code
+    // {
+    //   "includes": ["ext/**"]
+    // },
     // Source code
     {
       "includes": ["index.*", "livery-*.ts", "src/**/*.ts", "test/**/*.ts"],
       "linter": {
-        "domains": {
-          "project": "all"
-        },
         "rules": {
           "correctness": {
             // TypeScript is better at checking this
             "noUndeclaredVariables": "off",
-            // Biome is just plain wrong here sometimes; leave it to TypeScript
+            // TypeScript is better at checking this
             "noUnusedPrivateClassMembers": "off"
           },
           "style": {
-            "useConsistentMemberAccessibility": "error",
-            // Don't require strict pascal case for compatibility with DOM types like HTMLElementTagNameMap
-            // and we also frequently deal with third party names for Analytics properties and XML attributes, etc.
-            // TODO: Only disable this check where needed; but that's painful without block level biome-ignore support
-            "useNamingConvention": "off"
+            // @typescript-eslint/prefer-readonly is better at checking this
+            "useReadonlyClassProperties": "off",
+            // Increase level from info to error
+            "useConsistentMemberAccessibility": "error"
           }
         }
       }
@@ -76,6 +126,10 @@
           "test": "all"
         },
         "rules": {
+          "complexity": {
+            // describe() will legitimately use many lines of code
+            "noExcessiveLinesPerFunction": "off"
+          },
           "style": {
             // Naming of our test files matches the file to be tested, p.e: Foo.ts and Foo.test.ts; not foo.test.ts
             "useFilenamingConvention": "off"
