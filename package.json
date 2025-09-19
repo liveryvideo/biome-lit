@@ -34,12 +34,12 @@
     "eslint": ">=9"
   },
   "dependencies": {
-    "@stylistic/eslint-plugin": "^5.2.3",
+    "@stylistic/eslint-plugin": "^5.4.0",
     "eslint-plugin-lit": "^2.1.1",
     "eslint-plugin-perfectionist": "^4.15.0",
     "eslint-plugin-tsdoc": "^0.4.0",
     "eslint-plugin-wc": "^3.0.1",
-    "typescript-eslint": "^8.40.0"
+    "typescript-eslint": "^8.44.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
@@ -48,7 +48,7 @@
     "@semantic-release/git": "^10.0.1",
     "git-branch-is": "^4.0.0",
     "husky": "^9.1.7",
-    "semantic-release": "^24.2.7"
+    "semantic-release": "^24.2.8"
   },
   "commitlint": {
     "extends": [
