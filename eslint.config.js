@@ -38,6 +38,7 @@ export default [
     rules: {
       '@typescript-eslint/no-floating-promises': 'error',
       '@typescript-eslint/prefer-promise-reject-errors': 'error',
+      '@typescript-eslint/prefer-readonly': 'error',
     },
   },
 
@@ -73,12 +74,14 @@ export default [
     plugins: { perfectionist },
     rules: {
       ...pluginRulesError(perfectionist, 'perfectionist'),
-      // Leave import sorting up to Biome
+      // Leave import and export sorting up to Biome
+      'perfectionist/sort-exports': 'off',
       'perfectionist/sort-imports': 'off',
+      'perfectionist/sort-named-exports': 'off',
       'perfectionist/sort-named-imports': 'off',
     },
     settings: {
-      // Case has meaning, p.e. with: 'fooBarge' | 'fooWargs' | 'foobArgs', we want to group by foo before foob
+      // Case has meaning, p.e. with: 'foo' | 'fooBarge' | 'fooWargs' | 'foobArgs', we want to group by foo before foob
       // See: https://github.com/azat-io/eslint-plugin-perfectionist/issues/424
       perfectionist: {
         alphabet: Alphabet.generateRecommendedAlphabet()

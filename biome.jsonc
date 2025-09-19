@@ -1,70 +1,130 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+  // Note: As this file is extended from projects, this can't extend something else
+  "files": {
+    "includes": ["**/*", "!ext"]
+  },
   "vcs": {
     "enabled": true,
     "clientKind": "git",
     "useIgnoreFile": true
   },
   "formatter": {
-    "useEditorconfig": true,
-    // The above does not seem to be working yet, so let's repeat the relevant contents here
-    // TODO: On Biome update see if this can be removed
-    "indentStyle": "space"
+    "useEditorconfig": true
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "single"
     }
   },
-  "linter": {
-    // Base configuration for Node environment config, scripts and tests and third party code
-    "ignore": ["ext/**"],
-    "rules": {
-      "recommended": true,
-      "style": {
-        // Useful when used sparingly, e.g: don't double check tsconfig noUncheckedIndexedAccess
-        "noNonNullAssertion": "off"
+  "assist": {
+    "actions": {
+      "source": {
+        // Note: eslint perfectionist handles import and export sorting better, but let's stick to defaults
+        "organizeImports": "on"
       }
     }
   },
+  "linter": {
+    // Enable all rules; then disable those we don't like below
+    // Note: Disabling using "domains": { ..: "none" } here or in Base configuration does not work
+    "rules": {
+      "a11y": "on",
+      "complexity": "on",
+      "correctness": "on",
+      "performance": "on",
+      "security": "on",
+      "style": "on",
+      "suspicious": "on"
+    }
+  },
   "overrides": [
-    // Make Biome format this like npm, see: https://github.com/biomejs/biome/issues/2763
-    // TODO: On Biome update see if this can be removed
+    // Base configuration
     {
-      "include": ["package.json"],
-      "formatter": {
-        "lineWidth": 1
-      }
-    },
-    // Source code
-    {
-      "include": ["index.*", "livery-*.ts", "src/**/*.ts", "test/**/*.ts"],
+      "includes": ["**/*", "!ext/**"],
       "linter": {
         "rules": {
-          // Let's be strict, including all rules ported from sonarjs and unicorn eslint plugins, etc.
-          "all": true,
-          "correctness": {
-            // TypeScript is better at checking this
-            "noUndeclaredVariables": "off"
-          },
-          "nursery": {
-            "useConsistentMemberAccessibility": "error"
+          "suspicious": {
+            // This is broken; thinks a static and a normal method with the same name are overloading when they're not
+            "useAdjacentOverloadSignatures": "off"
           },
           "style": {
+            // Useful when used sparingly and we already use tsconfig noUncheckedIndexedAccess as well
+            "noNonNullAssertion": "off",
+            // Leave sorting to perfectionist
+            "useExportsLast": "off",
+            // Leave sorting to perfectionist
+            "useGroupedAccessorPairs": "off",
             // Don't require strict pascal case for compatibility with DOM types like HTMLElementTagNameMap
             // and we also frequently deal with third party names for Analytics properties and XML attributes, etc.
-            // TODO: Only disable this check where needed; but that's painful without block level biome-ignore support
+            // and we use vite defines named: __NAME__
+            // TODO: Use custom naming convention and only disable this check where needed
             "useNamingConvention": "off"
+          }
+        }
+      }
+    },
+    // Node scripts and configs
+    {
+      "includes": ["*.cjs", "*.js", "*.ts", "!index.*"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            // Can be used here
+            "noNodejsModules": "off"
+          },
+          "performance": {
+            // Irrelevant for build scripts
+            "useTopLevelRegex": "off"
+          },
+          "style": {
+            // Config scripts commonly use default exports
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    },
+    // TypeScript
+    {
+      "includes": ["**/*.ts"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            // TypeScript is better at checking this
+            "noUndeclaredVariables": "off",
+            // Automatically remove unused imports (why is this unsafe and not enabled by default?)
+            "noUnusedImports": {
+              "level": "on",
+              "fix": "safe",
+              "options": {}
+            },
+            // TypeScript is better at checking this
+            "noUnusedPrivateClassMembers": "off"
+          },
+          "style": {
+            // @typescript-eslint/prefer-readonly is better at checking this
+            "useReadonlyClassProperties": "off",
+            // Increase level from info to error
+            "useConsistentMemberAccessibility": "error"
           }
         }
       }
     },
     // Test code
     {
-      "include": ["test/**/*.ts"],
+      "includes": ["test/**/*.ts"],
       "linter": {
+        "domains": {
+          "test": "all"
+        },
         "rules": {
+          "complexity": {
+            // describe() will legitimately use many lines of code
+            "noExcessiveLinesPerFunction": "off"
+          },
           "style": {
+            // Tests often use test values the meaning of which should be clear from the context (e.g: test name)
+            "noMagicNumbers": "off",
             // Naming of our test files matches the file to be tested, p.e: Foo.ts and Foo.test.ts; not foo.test.ts
             "useFilenamingConvention": "off"
           }

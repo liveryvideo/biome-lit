@@ -8,6 +8,11 @@ And [ESLint](https://eslint.org/) for additional linting, see [eslint.config.js]
 
 ## Installation
 
+TODO: Include default `tsconfig.json` in this repo to extend from other repos
+And enable "strictNullChecks": true in there while we are at it?
+
+TODO: Add Prettier to this tool set for formatting Markdown and other languages not yet supported by Biome.
+
 Install the dependencies:
 
 ```bash
@@ -27,8 +32,9 @@ Create `eslint.config.js` with:
 
 ```js
 import configs from '@liveryvideo/biome-lit/eslint';
+import { defineConfig } from 'eslint/config';
 
-export default configs;
+export default defineConfig(configs);
 ```
 
 Add scripts to `package.json` with:
@@ -102,10 +108,11 @@ And in `settings.json` specify:
 
 ```json
 {
+  "biome.requireConfiguration": true,
   "editor.codeActionsOnSave": {
-    "quickfix.biome": "explicit",
-    "source.organizeImports.biome": "explicit",
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.biome": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports.biome": "explicit"
   },
   "editor.defaultFormatter": "biomejs.biome",
   "editor.formatOnSave": true,
