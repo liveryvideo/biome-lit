@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/liveryvideo/biome-lit/compare/v1.6.0...v2.0.0) (2025-09-19)
+
+
+### Build System
+
+* update dependencies: biome v2, etc ([51c33c0](https://github.com/liveryvideo/biome-lit/commit/51c33c0edf0e12a54c25d4bc78151455579cd673))
+
+
+### BREAKING CHANGES
+
+* Bump biome peer dep by Major version and new rules etc
+
 # [1.6.0](https://github.com/liveryvideo/biome-lit/compare/v1.5.1...v1.6.0) (2025-04-24)
 
 
