@@ -11,6 +11,7 @@ And [ESLint](https://eslint.org/) for additional linting, see [eslint.config.js]
 TODO: Include default `tsconfig.json` in this repo to extend from other repos
 And enable "strictNullChecks": true in there while we are at it?
 
+TODO: Add Prettier to this tool set for formatting Markdown and other languages not yet supported by Biome.
 
 Install the dependencies:
 
@@ -107,6 +108,7 @@ And in `settings.json` specify:
 
 ```json
 {
+  "biome.requireConfiguration": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
     "source.fixAll.eslint": "explicit",
