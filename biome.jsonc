@@ -53,7 +53,7 @@
           "security": {
             // Increase from default threshold of 41 to avoid false positives with code words like DashWcEngine
             "noSecrets": {
-              "level": "error",
+              "level": "on",
               "options": {
                 "entropyThreshold": 65
               }
@@ -62,6 +62,13 @@
           "style": {
             // Useful when used sparingly and we already use tsconfig noUncheckedIndexedAccess as well
             "noNonNullAssertion": "off",
+            // For predictability, default to using type definitions instead of interfaces
+            "useConsistentTypeDefinitions": {
+              "level": "on",
+              "options": {
+                "style": "type"
+              }
+            },
             // Leave sorting to perfectionist
             "useExportsLast": "off",
             // Leave sorting to perfectionist
