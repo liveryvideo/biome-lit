@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/liveryvideo/biome-lit/compare/v2.2.0...v2.2.1) (2025-12-04)
+
+
+### Bug Fixes
+
+* **biome:** increase noSecrets entropy threshold to avoid false positives on words like DashWcEngine ([03e56db](https://github.com/liveryvideo/biome-lit/commit/03e56dbff7d31e18a88b5ee502ad1a5c6c61e04e))
+
 # [2.2.0](https://github.com/liveryvideo/biome-lit/compare/v2.1.0...v2.2.0) (2025-12-04)
 
 
