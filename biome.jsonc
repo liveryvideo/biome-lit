@@ -51,6 +51,15 @@
       ],
       "linter": {
         "rules": {
+          "security": {
+            // Increase from default threshold of 41 to avoid false positives with code words like DashWcEngine
+            "noSecrets": {
+              "level": "error",
+              "options": {
+                "entropyThreshold": 65
+              }
+            }
+          },
           "style": {
             // Useful when used sparingly and we already use tsconfig noUncheckedIndexedAccess as well
             "noNonNullAssertion": "off",
