@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/liveryvideo/biome-lit/compare/v2.2.2...v2.2.3) (2025-12-04)
+
+
+### Bug Fixes
+
+* **biome:** change useConsistentTypeDefinitions style from interface to type ([d83c002](https://github.com/liveryvideo/biome-lit/commit/d83c0022234e7596ef1f3ed5288b09797a4da618))
+
 ## [2.2.2](https://github.com/liveryvideo/biome-lit/compare/v2.2.1...v2.2.2) (2025-12-04)
 
 
