@@ -12,7 +12,7 @@
   "files": {
     "includes": [
       "**/*",
-      "!ext"
+      "!!ext/**/*"
     ]
   },
   "formatter": {
@@ -46,8 +46,7 @@
     // Base configuration
     {
       "includes": [
-        "**/*",
-        "!ext/**"
+        "**/*"
       ],
       "linter": {
         "rules": {
