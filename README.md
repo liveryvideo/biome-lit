@@ -97,6 +97,7 @@ Based on the conventions above this will:
 [tsdoc](https://npmjs.com/package/eslint-plugin-tsdoc) and
 [wc](https://npmjs.com/package/eslint-plugin-wc)
   - Where `**/*.ts` files are parsed using [typescript-eslint](https://npmjs.com/package/typescript-eslint)
+- Imports, module/class/.. members, object keys and array items are all sorted using either Perfectionist or Biome
 
 ## Additional installation
 

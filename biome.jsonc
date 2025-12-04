@@ -1,16 +1,19 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        // Note: eslint perfectionist handles import and export sorting better, but let's stick to defaults
+        "organizeImports": "on"
+      }
+    }
+  },
   // Note: As this file is extended from projects, this can't extend something else
   "files": {
     "includes": [
       "**/*",
       "!ext"
     ]
-  },
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
   },
   "formatter": {
     "expand": "never",
@@ -24,14 +27,6 @@
   "json": {
     "formatter": {
       "expand": "always"
-    }
-  },
-  "assist": {
-    "actions": {
-      "source": {
-        // Note: eslint perfectionist handles import and export sorting better, but let's stick to defaults
-        "organizeImports": "on"
-      }
     }
   },
   "linter": {
@@ -56,10 +51,6 @@
       ],
       "linter": {
         "rules": {
-          "suspicious": {
-            // This is broken; thinks a static and a normal method with the same name are overloading when they're not
-            "useAdjacentOverloadSignatures": "off"
-          },
           "style": {
             // Useful when used sparingly and we already use tsconfig noUncheckedIndexedAccess as well
             "noNonNullAssertion": "off",
@@ -72,10 +63,31 @@
             // and we use vite defines named: __NAME__
             // TODO: Use custom naming convention and only disable this check where needed
             "useNamingConvention": "off"
+          },
+          "suspicious": {
+            // This is broken; thinks a static and a normal method with the same name are overloading when they're not
+            "useAdjacentOverloadSignatures": "off"
           }
         }
       }
     },
+
+    // JSON(C) files
+    {
+      "assist": {
+        "actions": {
+          "source": {
+            // Sort keys in JSON files using Biome because Perfectionist does not support that
+            "useSortedKeys": "on"
+          }
+        }
+      },
+      "includes": [
+        "**/*.json",
+        "**/*.jsonc"
+      ]
+    },
+
     // Node scripts and configs
     {
       "includes": [
@@ -101,6 +113,7 @@
         }
       }
     },
+
     // TypeScript
     {
       "includes": [
@@ -113,22 +126,23 @@
             "noUndeclaredVariables": "off",
             // Automatically remove unused imports (why is this unsafe and not enabled by default?)
             "noUnusedImports": {
-              "level": "on",
               "fix": "safe",
+              "level": "on",
               "options": {}
             },
             // TypeScript is better at checking this
             "noUnusedPrivateClassMembers": "off"
           },
           "style": {
-            // @typescript-eslint/prefer-readonly is better at checking this
-            "useReadonlyClassProperties": "off",
             // Increase level from info to error
-            "useConsistentMemberAccessibility": "error"
+            "useConsistentMemberAccessibility": "error",
+            // @typescript-eslint/prefer-readonly is better at checking this
+            "useReadonlyClassProperties": "off"
           }
         }
       }
     },
+
     // Test code
     {
       "includes": [
@@ -152,5 +166,10 @@
         }
       }
     }
-  ]
+  ],
+  "vcs": {
+    "clientKind": "git",
+    "enabled": true,
+    "useIgnoreFile": true
+  }
 }
