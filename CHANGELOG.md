@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/liveryvideo/biome-lit/compare/v2.1.0...v2.2.0) (2025-12-04)
+
+
+### Features
+
+* update biome to v2.3.8 and eslint plugins ([ffe260d](https://github.com/liveryvideo/biome-lit/commit/ffe260d7b9c18779ae51817da674b3aef8919488))
+
 # [2.1.0](https://github.com/liveryvideo/biome-lit/compare/v2.0.0...v2.1.0) (2025-12-04)
 
 
