@@ -1,3 +1,11 @@
+# [2.1.0](https://github.com/liveryvideo/biome-lit/compare/v2.0.0...v2.1.0) (2025-12-04)
+
+
+### Features
+
+* **biome:** always expand objects in JSON, but only when necessary in other files ([cda7d14](https://github.com/liveryvideo/biome-lit/commit/cda7d1427f0fc16deef1414727ca594e778f8faa))
+* **biome:** sort object keys in JSON(C) files ([6d5452b](https://github.com/liveryvideo/biome-lit/commit/6d5452b9f9f8752c5e81e33ef4a712ac359052ee))
+
 # [2.0.0](https://github.com/liveryvideo/biome-lit/compare/v1.6.0...v2.0.0) (2025-09-19)
 
 
