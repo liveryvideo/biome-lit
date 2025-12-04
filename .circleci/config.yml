@@ -34,6 +34,7 @@ jobs:
     steps:
       - checkout
       - npm_install
+      - run: npm run lint
       # Disable husky git hooks to prevent commitlint from tripping on the generated changelog commit message
       - run: HUSKY=0 npx semantic-release
 

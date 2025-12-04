@@ -26,6 +26,8 @@
   },
   "type": "module",
   "scripts": {
+    "lint": "biome check && eslint",
+    "lint:fix": "eslint --fix && biome check --fix",
     "prepare": "husky",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -42,17 +44,26 @@
     "typescript-eslint": "^8.44.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
+    "eslint": "^9.36.0",
     "git-branch-is": "^4.0.0",
     "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
     "semantic-release": "^24.2.8"
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*": [
+      "biome check --fix --no-errors-on-unmatched",
+      "eslint --fix"
     ]
   }
 }

@@ -1,3 +1,4 @@
+'use strict';
 const { execSync } = require('node:child_process');
 
 const config = {
