@@ -9,25 +9,25 @@
     ]
   },
   "dependencies": {
-    "@stylistic/eslint-plugin": "^5.4.0",
+    "@stylistic/eslint-plugin": "^5.6.1",
     "eslint-plugin-lit": "^2.1.1",
-    "eslint-plugin-perfectionist": "^4.15.0",
-    "eslint-plugin-tsdoc": "^0.4.0",
-    "eslint-plugin-wc": "^3.0.1",
-    "typescript-eslint": "^8.44.0"
+    "eslint-plugin-perfectionist": "^4.15.1",
+    "eslint-plugin-tsdoc": "^0.5.0",
+    "eslint-plugin-wc": "^3.0.2",
+    "typescript-eslint": "^8.48.1"
   },
   "description": "Shared Biome with ESLint configuration for use in Livery projects using TypeScript and Lit custom elements.",
   "devDependencies": {
-    "@biomejs/biome": "^2.2.4",
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
+    "@biomejs/biome": "^2.3.8",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "eslint": "^9.36.0",
+    "eslint": "^9.39.1",
     "git-branch-is": "^4.0.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.1.6",
-    "semantic-release": "^24.2.8"
+    "lint-staged": "^16.2.7",
+    "semantic-release": "^25.0.2"
   },
   "exports": {
     "./biome": "./biome.jsonc",
