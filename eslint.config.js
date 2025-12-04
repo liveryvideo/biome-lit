@@ -22,9 +22,7 @@ const tsFiles = ['**/*.ts'];
  */
 export default [
   // Directories to ignore
-  {
-    ignores: ['dist/', 'ext/', 'node_modules/'],
-  },
+  { ignores: ['dist/', 'ext/', 'node_modules/'] },
 
   // TypeScript support and a few cherry picked rules
   {
@@ -96,11 +94,7 @@ export default [
 
   // A few cherry picked Stylistic formatting rules
   {
-    plugins: {
-      '@stylistic': stylistic,
-    },
-    rules: {
-      '@stylistic/lines-between-class-members': 'error',
-    },
+    plugins: { '@stylistic': stylistic },
+    rules: { '@stylistic/lines-between-class-members': 'error' },
   },
 ];

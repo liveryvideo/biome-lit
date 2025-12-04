@@ -86,6 +86,8 @@ This assumes the following conventional files/directories:
 Based on the conventions above this will:
 
 - Indent using 2 spaces and use single quotes for formatting
+- Always format objects expanded in JSON files (like `package.json` must be), but only when necessary in other files
+  - I.e: [reversible](https://prettier.io/docs/rationale#multi-line-objects) unlike Prettier/Biome defaults and compact for frequent use of objects as function arguments etc.
 - `index.*, livery-*.ts, src/**/*.ts, test/**/*.ts` are formatted by Biome and strictly linted using [all rules](https://biomejs.dev/linter/rules/) but for a few
 - All other supported files (e.g: config, scripts) but those matching `.gitignore` are formatted by Biome
   - And all of those but `ext/` are linted using only the [recommended rules](https://biomejs.dev/linter/rules/#recommended-rules)

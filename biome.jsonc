@@ -2,7 +2,10 @@
   "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
   // Note: As this file is extended from projects, this can't extend something else
   "files": {
-    "includes": ["**/*", "!ext"]
+    "includes": [
+      "**/*",
+      "!ext"
+    ]
   },
   "vcs": {
     "enabled": true,
@@ -10,11 +13,17 @@
     "useIgnoreFile": true
   },
   "formatter": {
+    "expand": "never",
     "useEditorconfig": true
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "single"
+    }
+  },
+  "json": {
+    "formatter": {
+      "expand": "always"
     }
   },
   "assist": {
@@ -41,7 +50,10 @@
   "overrides": [
     // Base configuration
     {
-      "includes": ["**/*", "!ext/**"],
+      "includes": [
+        "**/*",
+        "!ext/**"
+      ],
       "linter": {
         "rules": {
           "suspicious": {
@@ -66,7 +78,12 @@
     },
     // Node scripts and configs
     {
-      "includes": ["*.cjs", "*.js", "*.ts", "!index.*"],
+      "includes": [
+        "*.cjs",
+        "*.js",
+        "*.ts",
+        "!index.*"
+      ],
       "linter": {
         "rules": {
           "correctness": {
@@ -86,7 +103,9 @@
     },
     // TypeScript
     {
-      "includes": ["**/*.ts"],
+      "includes": [
+        "**/*.ts"
+      ],
       "linter": {
         "rules": {
           "correctness": {
@@ -112,7 +131,9 @@
     },
     // Test code
     {
-      "includes": ["test/**/*.ts"],
+      "includes": [
+        "test/**/*.ts"
+      ],
       "linter": {
         "domains": {
           "test": "all"
