@@ -66,6 +66,7 @@
             "useConsistentTypeDefinitions": {
               "level": "on",
               "options": {
+                // TODO: Fix this so it doesn't complain about declare global interface extensions or just disable it?
                 "style": "type"
               }
             },
