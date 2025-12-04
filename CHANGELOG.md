@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/liveryvideo/biome-lit/compare/v2.2.1...v2.2.2) (2025-12-04)
+
+
+### Bug Fixes
+
+* **biome:** force-ignore all /ext/ files ([ae3004e](https://github.com/liveryvideo/biome-lit/commit/ae3004edcc0fe6af0c1d4f4003e00863a8028f40))
+
 ## [2.2.1](https://github.com/liveryvideo/biome-lit/compare/v2.2.0...v2.2.1) (2025-12-04)
 
 
