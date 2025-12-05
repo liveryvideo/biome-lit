@@ -62,14 +62,6 @@
           "style": {
             // Useful when used sparingly and we already use tsconfig noUncheckedIndexedAccess as well
             "noNonNullAssertion": "off",
-            // For predictability, default to using type definitions instead of interfaces
-            "useConsistentTypeDefinitions": {
-              "level": "on",
-              "options": {
-                // TODO: Fix this so it doesn't complain about declare global interface extensions or just disable it?
-                "style": "type"
-              }
-            },
             // Leave sorting to perfectionist
             "useExportsLast": "off",
             // Leave sorting to perfectionist
