@@ -9,6 +9,7 @@ executors:
   default:
     docker:
       - image: cimg/node:24.11.1
+      # TODO: Also get slack notifications in here
 
 commands:
   npm_install:
