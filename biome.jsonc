@@ -102,6 +102,7 @@
         "*.cjs",
         "*.js",
         "*.ts",
+        "scripts/**/*.js",
         "!index.*"
       ],
       "linter": {
@@ -117,6 +118,10 @@
           "style": {
             // Config scripts commonly use default exports
             "noDefaultExport": "off"
+          },
+          "suspicious": {
+            // Legitimate for scripts to use console
+            "noConsole": "off"
           }
         }
       }
