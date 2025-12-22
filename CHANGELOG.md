@@ -1,3 +1,10 @@
+## [2.2.5](https://github.com/liveryvideo/biome-lit/compare/v2.2.4...v2.2.5) (2025-12-22)
+
+
+### Bug Fixes
+
+* **biome:** lint /scripts/**/* as scripts and allow scripts to use console ([39f94ed](https://github.com/liveryvideo/biome-lit/commit/39f94edfd736ed205d5d66400b3ce43e5b446ecc))
+
 ## [2.2.4](https://github.com/liveryvideo/biome-lit/compare/v2.2.3...v2.2.4) (2025-12-05)
 
 
